@@ -1,0 +1,81 @@
+{
+    "data_config": {
+        "name": "fly_v1",
+        "labels": [  
+            {
+                "name": "middle_dist_centroid",
+                "thresholds": [15, 50]
+            },
+            {
+                "name": "middle_speed_resident",
+                "thresholds": [0.1, 0.5]
+            },
+            {
+                "name": "middle_speed_intruder",
+                "thresholds": [0.1, 0.5]
+            },
+            {
+                "name": "middle_angular_speed_resident",
+                "thresholds": [0.01, 0.1]
+            },
+            {
+                "name": "middle_angular_speed_intruder",
+                "thresholds": [0.01, 0.1]
+            },
+            {
+                "name": "middle_wing_angle_min_resident",
+                "thresholds": [0.05, 0.1]
+            },
+            {
+                "name": "middle_wing_angle_max_resident",
+                "thresholds": [0.1, 0.5]
+            },
+            {
+                "name": "middle_wing_angle_min_intruder",
+                "thresholds": [0.05, 0.1]
+            },
+            {
+                "name": "middle_wing_angle_max_intruder",
+                "thresholds": [0.1, 0.5]
+            },             
+            {
+                "name": "middle_angle_social",
+                "thresholds": [0.5, 1.5]
+            },               
+            {
+                "name": "middle_angle_social_intruder",
+                "thresholds": [0.5, 1.5]
+            },                        
+            {
+                "name": "middle_axis_ratio_resident",
+                "thresholds": [2.0, 3.0]
+            },
+            {
+                "name": "middle_axis_ratio_intruder",
+                "thresholds": [2.0, 3.0]
+            }                                                 
+        ],
+        "augmentations": [
+            {
+               "name": "all_random" 
+            }
+        ]        
+    },
+    "model_config": {
+        "name": "treba_model",
+        "z_dim": 32,
+        "h_dim": 256,
+        "rnn_dim": 256,
+        "num_layers": 1,
+        "contrastive_loss_weight": 10.0,
+        "consistency_loss_weight": 1.0,
+        "decoding_loss_weight": 0               
+    },
+    "train_config": {
+        "batch_size": 128,
+        "checkpoint_freq": 999,
+        "learning_rate": 0.0002,
+        "num_epochs": [100,200],
+        "clip": 10
+    }
+}

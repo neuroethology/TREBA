@@ -1,0 +1,12 @@
+.DS_Store
+
+__pycache__/
+saved/
+checkpoints/
+downstream_tasks/fly_classification/classifier_logs/
+
+*.pyc
+*~
+*.sublime-workspace
+*.sublime-project
+*.h5
