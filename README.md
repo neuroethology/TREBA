@@ -125,7 +125,7 @@ Please refer to our paper for details and consider citing it if you find the cod
 ```
 @article{sun2020task,
   title={Task Programming: Learning Data Efficient Behavior Representations},
-  author={Sun, Jennifer J and Kennedy, Ann and Zhan, Eric and Yue, Yisong and Perona, Pietro},
+  author={Sun, Jennifer J and Kennedy, Ann and Zhan, Eric and Anderson, David J and Yue, Yisong and Perona, Pietro},
   journal={arXiv preprint arXiv:2011.13917},
   year={2020}
 }
