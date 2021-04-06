@@ -80,7 +80,7 @@ python run_single.py \
 
 If you are running on CPU, remove -d 0 from the command.
 
-This run will take around 2 days on GPU.
+This run will take around 1~2 days on GPU.
 
 The trained models and extracted features will be saved to saved/fly_treba_original/run_1
 
