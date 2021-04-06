@@ -19,6 +19,8 @@ class TREBA_model(BaseSequentialModel):
                 'num_layers']
     requires_labels = False
     requires_augmentations = False
+    
+    log_metrics = False
 
     # Default hyperparameters used for training.
     loss_params = {"contrastive_temperature": 0.07,
@@ -257,9 +259,10 @@ class TREBA_model(BaseSequentialModel):
                                                              lf.categorical)
 
                 # Compute label loss with approx
-                approx_labels = self.label(states[:-1], actions, lf_idx, lf.categorical)
-                assert approx_labels.size() == lf_labels.size()
-                self.log.metrics['{}_approx'.format(lf.name)] = torch.sum(approx_labels*lf_labels)
+                if log_metrics:
+                    approx_labels = self.label(states[:-1], actions, lf_idx, lf.categorical)
+                    assert approx_labels.size() == lf_labels.size()
+                    self.log.metrics['{}_approx'.format(lf.name)] = torch.sum(approx_labels*lf_labels)
 
         # Train TVAE with programs.
         elif self.stage >= 2 or not self.loss_params['consistency_loss_weight'] > 0:
@@ -312,15 +315,16 @@ class TREBA_model(BaseSequentialModel):
                                                             loss_weight = self.loss_params['consistency_loss_weight'])
                     
                     # Compute label loss with approx
-                    approx_labels = self.label(rollout_states[:-1], rollout_actions, lf_idx, lf.categorical)
-                    assert approx_labels.size() == lf_labels.size()
-                    self.log.metrics['{}_approx'.format(lf.name)] = torch.sum(approx_labels*lf_labels)
+                    if self.log_metrics:
+                        approx_labels = self.label(rollout_states[:-1], rollout_actions, lf_idx, lf.categorical)
+                        assert approx_labels.size() == lf_labels.size()
+                        self.log.metrics['{}_approx'.format(lf.name)] = torch.sum(approx_labels*lf_labels)
 
-                    # Compute label loss with true LF    
-                    rollout_lf_labels = lf.label(rollout_states.transpose(0,1).detach().cpu(),
-                        rollout_actions.transpose(0,1).detach().cpu(), batch=True)
-                    assert rollout_lf_labels.size() == lf_labels.size()
-                    self.log.metrics['{}_true'.format(lf.name)] = torch.sum(rollout_lf_labels*lf_labels.cpu())
+                        # Compute label loss with true LF    
+                        rollout_lf_labels = lf.label(rollout_states.transpose(0,1).detach().cpu(),
+                            rollout_actions.transpose(0,1).detach().cpu(), batch=True)
+                        assert rollout_lf_labels.size() == lf_labels.size()
+                        self.log.metrics['{}_true'.format(lf.name)] = torch.sum(rollout_lf_labels*lf_labels.cpu())
 
             # If augmentations are provided, additionally train with those.
             if 'augmentations' in self.config.keys():
