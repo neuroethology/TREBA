@@ -259,7 +259,7 @@ class TREBA_model(BaseSequentialModel):
                                                              lf.categorical)
 
                 # Compute label loss with approx
-                if log_metrics:
+                if self.log_metrics:
                     approx_labels = self.label(states[:-1], actions, lf_idx, lf.categorical)
                     assert approx_labels.size() == lf_labels.size()
                     self.log.metrics['{}_approx'.format(lf.name)] = torch.sum(approx_labels*lf_labels)
