@@ -28,7 +28,7 @@ Note that (TVAE only) corresponds to using trajectory generation losses from a T
 
 >Coming soon!
 
-Since the data used in the mouse experiments in our paper is from an internal dataset, we will update the task programming results here for the mouse dataset with those from [a recently released mouse challenge](https://www.aicrowd.com/challenges/multi-agent-behavior-representation-modeling-measurement-and-applications).
+Since the data used in the mouse experiments in our paper is from an internal dataset, we will update the task programming results here from the released [CalMS21 dataset](https://arxiv.org/abs/2104.02710). Link to download the dataset: [https://data.caltech.edu/records/1991](https://data.caltech.edu/records/1991).
 
 
 ## Quick Start
@@ -80,7 +80,7 @@ python run_single.py \
 
 If you are running on CPU, remove -d 0 from the command.
 
-This run will take around 1~2 days on GPU.
+This run will take around ~1 day on GPU.
 
 The trained models and extracted features will be saved to saved/fly_treba_original/run_1
 
