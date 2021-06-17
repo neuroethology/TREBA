@@ -31,7 +31,6 @@ class MouseV1Dataset(TrajectoryDataset):
     _svd_mean = None
 
     normalize_data = True
-    single_agent = False
     compute_svd = False
 
     test_name = TEST_FILE
@@ -43,8 +42,6 @@ class MouseV1Dataset(TrajectoryDataset):
         # Process configs
         if 'normalize_data' in self.config:
             self.normalize_data = self.config['normalize_data']
-        if 'single_agent' in self.config:
-            self.single_agent = self.config['single_agent']
         if 'compute_svd' in self.config:
             assert isinstance(self.config['compute_svd'], int)
             self.compute_svd = self.config['compute_svd']

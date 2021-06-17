@@ -1,7 +1,6 @@
 {
     "data_config": {
         "name": "mouse_v1",
-        "single_agent": false,
         "compute_svd": 5,
         "labels": [
             {
