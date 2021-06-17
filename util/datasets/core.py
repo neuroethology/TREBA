@@ -46,7 +46,7 @@ class TrajectoryDataset(Dataset):
             data_config['augmentations'] = []
 
 
-        # Check if trajectories will be subsampled (e.g basketball dataset)
+        # Check if trajectories will be subsampled
         if 'subsample' in data_config:
             assert isinstance(data_config['subsample'], int) and data_config['subsample'] > 0
             self.subsample = data_config['subsample']
