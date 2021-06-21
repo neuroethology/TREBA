@@ -4,7 +4,8 @@
 
 Implementation from the paper: 
 > Jennifer J. Sun, Ann Kennedy, Eric Zhan, David J. Anderson, Yisong Yue, Pietro Perona. [Task Programming: Learning Data Efficient Behavior Representations](https://arxiv.org/abs/2011.13917). In Conference on Computer Vision and Pattern Recognition (CVPR), 2021.
-Awarded student paper at CVPR2021! 
+
+Awarded best student paper at CVPR2021! 
 
 Our learned trajectory embeddings can be applied to a variety of behavior analysis tasks. Here we show instructions on training TREBA, and applying it to behavior classification.
 
