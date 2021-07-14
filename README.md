@@ -31,7 +31,7 @@ Note that (TVAE only) corresponds to using trajectory generation losses from a T
 | Input Features | Task 1 (F1 / MAP) | Task 2 (F1 / MAP) | Task 3 (F1 / MAP) |
 |:-------|:-------:|:-------:|:-------:|
 | Pose | 0.793 / 0.856 | 0.754 / 0.813 | 0.338 / 0.317 | 
-| Pose + TREBA (w/ Task Programming) | 0.829 / 0.889 | 0.800 / 0.875 | 0.328 / 0.320 |
+| Pose + TREBA (w/ Task Programming) | 0.829 / 0.889 | 0.774 / 0.835 | 0.328 / 0.320 |
 
 
 Since the data used in the mouse experiments in our paper is from an internal dataset, we show the task programming results here from the released [CalMS21 dataset](https://arxiv.org/abs/2104.02710). Link to download the dataset: [https://data.caltech.edu/records/1991](https://data.caltech.edu/records/1991). The dataset link also includes the pre-extracted TREBA features. To use the pre-extracted TREBA features for behavior classification on CalMS21, you can use the code in the [CalMS21 Classifier Repo](https://gitlab.aicrowd.com/aicrowd/research/mab-e/mab-e-baselines). The three tasks are:
