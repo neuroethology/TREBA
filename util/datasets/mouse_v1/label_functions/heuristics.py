@@ -33,41 +33,6 @@ class ReadLabels(LabelFunction):
     def plot(self, ax, states, label, width, length):
         return ax    
 
-class MiddleAngleSocial(LabelFunction):
-
-    name = 'middle_angle_social'
-    svd_computer = None
-    mean = None
-
-    def __init__(self, lf_config):
-        super().__init__(lf_config, output_dim=1)
-        with open(svd_computer_path, 'rb') as f:
-            self.svd_computer = pickle.load(f)
-        with open(mean_path, 'rb') as f:        
-            self.mean = pickle.load(f)
-        
-
-    def label_func(self, states, actions, true_label=None):
-        keypoints = transform_svd_to_keypoints(states.numpy()[:-1], self.svd_computer, self.mean,
-            stack_agents = True)
-        keypoints = unnormalize(keypoints)
-        
-        keypoints_resident = keypoints[0].reshape((-1, 7, 2))[MIDDLE_INDEX]
-        keypoints_intruder = keypoints[1].reshape((-1, 7, 2))[MIDDLE_INDEX]  
-        
-        angle = social_angle(keypoints_resident[:, 0], keypoints_resident[:, 1],
-            keypoints_intruder[:, 0], keypoints_intruder[:, 1])
-
-        label_tensor = torch.from_numpy(np.array(angle))
-
-        label_tensor = label_tensor.to(states.device)  
-
-        return torch.mean(label_tensor.float())
-
-
-    def plot(self, ax, states, label, width, length):
-        return ax     
-
 
 class MiddleAngleSocial(LabelFunction):
 
