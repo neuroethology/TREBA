@@ -307,7 +307,7 @@ class TREBA_model(BaseSequentialModel):
                 for lf_idx, lf_name in enumerate(labels_dict):
                     lf = self.config['label_functions'][lf_idx]
                     lf_labels = labels_dict[lf_name]
-                    self.log.losses[lf_name] = compute_label_loss(rollout_states[:-1], 
+                    self.log.losses[lf_name + '_consistency'] = compute_label_loss(rollout_states[:-1], 
                                                             rollout_actions, lf_labels,
                                                             self.label_approx_birnn[lf_idx],
                                                             self.label_approx_fc[lf_idx], 
