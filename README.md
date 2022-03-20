@@ -7,7 +7,7 @@ Implementation from the paper:
 
 Awarded best student paper at CVPR2021! 
 
-Our learned trajectory embeddings can be applied to a variety of behavior analysis tasks. Here we show instructions on training TREBA, and applying it to behavior classification.
+Our learned trajectory embeddings can be applied to a variety of behavior analysis tasks. Here we show instructions on training TREBA, and applying it to behavior classification. See [the tVAE repo](https://github.com/AndrewUlmer/MABe_2022_TVAE) from Andrew Ulmer for notebooks that uses the trajectory-VAE for representation learning!
 
 <p align="center"><img src="images/sample_1.gif" width="70%" alt="" /><img src="images/sample_2.gif" width="70%" alt="" /></p> 
 
