@@ -49,22 +49,15 @@ def extract_features(exp_dir,
 
     num_samples = 128
     loader = DataLoader(dataset, batch_size=num_samples, shuffle=False)
-    (states, actions, labels_dict) = next(iter(loader))
-
-    states = states.transpose(0, 1)
-    actions = actions.transpose(0, 1)
 
     save_array = np.array([])
 
     for batch_idx, (states, actions, labels_dict) in enumerate(loader):
-        states = states
-        actions = actions
 
         labels_dict = {key: value for key, value in labels_dict.items()}
 
         states = states.transpose(0, 1)
         actions = actions.transpose(0, 1)
-
 
         with torch.no_grad():   
             if len(dataset.active_label_functions) > 0:         
