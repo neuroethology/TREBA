@@ -412,10 +412,9 @@ class TREBA_model(BaseSequentialModel):
         T = horizon
 
         for t in range(T):
-            with torch.no_grad():
-                curr_state = rollout_states[-1].squeeze(0)
-                action = self.act(curr_state)
-                next_state = curr_state + action
+            curr_state = rollout_states[-1].squeeze(0)
+            action = self.act(curr_state)
+            next_state = curr_state + action
 
             rollout_states.append(next_state.unsqueeze(0))
             rollout_actions.append(action.unsqueeze(0))
